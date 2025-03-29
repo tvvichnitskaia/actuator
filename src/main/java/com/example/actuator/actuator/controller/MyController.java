@@ -20,7 +20,8 @@ public class MyController {
 
     @GetMapping("/ping")
     @ResponseStatus(HttpStatus.OK)
-    public void getHello(){
+    public String getHello(){
+        return "Hello";
         //return ResponseEntity.ok("{\"status\":\"OK\"}");
     }
 
