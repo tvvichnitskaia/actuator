@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  actuator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8087:8087"
+    container_name: actuator_app
+    networks:
+      - actuator_network
+
+networks:
+  actuator_network:
+    driver: bridge
+
