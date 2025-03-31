@@ -18,7 +18,7 @@ public class PingControllerTest {
     @Test
     public void testGetHello() {
         // Perform a GET request to /ping and assert the response status
-        mockMvc.perform(get("/ping"))
+        mockMvc.perform(get("/health"))
                 .andExpect(status().isOk());  // Verify that the status code is 200 OK
     }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/health")
 
 public class MyController {
 
@@ -20,7 +20,8 @@ public class MyController {
 
     @GetMapping("/ping")
     @ResponseStatus(HttpStatus.OK)
-    public void getHello(){
+    public String  getHello(){
+        return "Hello";
     }
 
 

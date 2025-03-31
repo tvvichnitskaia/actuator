@@ -35,7 +35,7 @@ public class MyControllerTest {
 
     @Test
     public void testGetHello() throws Exception {
-        mockMvc.perform(get("/admin/ping"))
+        mockMvc.perform(get("/health/ping"))
                 .andExpect(status().isOk());
     }
 
@@ -46,7 +46,7 @@ public class MyControllerTest {
         // Mocking the behavior of the health endpoint
         when(healthEndpoint.health()).thenReturn(new org.springframework.boot.actuate.health.Health.Builder().status(Status.UP).build());
 
-        mockMvc.perform(get("/admin"))
+        mockMvc.perform(get("/health"))
                 .andExpect(status().isOk())
                 .andExpect(result -> assertEquals("{\"status\":\"UP\"}", result.getResponse().getContentAsString()));
     }
@@ -56,7 +56,7 @@ public class MyControllerTest {
         // Mocking a "DOWN" status for health endpoint
         when(healthEndpoint.health()).thenReturn(new org.springframework.boot.actuate.health.Health.Builder().status(Status.DOWN).build());
 
-        mockMvc.perform(get("/admin"))
+        mockMvc.perform(get("/health"))
                 .andExpect(status().isOk())
                 .andExpect(result -> assertEquals("{\"status\":\"DOWN\"}", result.getResponse().getContentAsString()));
     }
